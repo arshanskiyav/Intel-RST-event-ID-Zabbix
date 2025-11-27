@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>6.4</version>
+    <template_groups>
+        <template_group>
+            <uuid>6b54fd28ab94497eb0d362b83a8c0717</uuid>
+            <name>Windows servers</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>2cbf5a4bd9e24ea68d73d8935e71e399</uuid>
+            <template>Intel RST event ID</template>
+            <name>Intel RST event ID</name>
+            <groups>
+                <group>
+                    <name>Windows servers</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>7a48120490224b0f84f567ad416eba9b</uuid>
+                    <name>Intel RST event id</name>
+                    <type>ZABBIX_ACTIVE</type>
+                    <key>irst.eventid</key>
+                    <delay>30m</delay>
+                    <tags>
+                        <tag>
+                            <tag>component</tag>
+                            <value>storage</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>a414b427fce1468e8f931868263d3f68</uuid>
+                            <expression>last(/Intel RST event ID/irst.eventid)=2</expression>
+                            <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                            <recovery_expression>last(/Intel RST event ID/irst.eventid)=0</recovery_expression>
+                            <name>Intel RST RAID check and repair</name>
+                            <priority>AVERAGE</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>4f942ce1765148158ed57e338173cc13</uuid>
+                            <expression>last(/Intel RST event ID/irst.eventid)=3</expression>
+                            <name>Intel RST RAID UNKNOW STATUS</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>66ef6594f036452cb25b0c3582f9a782</uuid>
+                            <expression>last(/Intel RST event ID/irst.eventid)=1</expression>
+                            <name>Intel RST Service down</name>
+                            <priority>WARNING</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+        </template>
+    </templates>
+</zabbix_export>
