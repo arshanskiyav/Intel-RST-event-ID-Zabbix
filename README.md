@@ -1,5 +1,5 @@
-# Intel RST event ID Zabbix
-Intel Rapid havn't cli. The mail function is very outdated and doesn't work with modern services.
+# Intel RST event ID for Zabbix 
+Intel Rapid  haven't cli. The mail function is very outdated and doesn't work with modern services.
 
 So this zabbix template just check event ID of IAStorDataMgrSvc in Windows Logs and state IAStorDataMgrSvc:
 - 7209   - Check and repair in progress, middle  trigger level
@@ -9,3 +9,4 @@ So this zabbix template just check event ID of IAStorDataMgrSvc in Windows Logs 
 - other  - Other state, high trigger level
 
 This solution checks without dividing into arrays.
+Tested on Zabbix 6.4.21
